@@ -6,6 +6,11 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 //Screens
 import { HomeScreen } from './screens/HomeScreen';
 import { SignUpScreen } from './screens/SignUpScreen';
+import { SignInScreen } from './screens/SignInScreen';
+
+//Firebase
+import { firebaseConfig } from './FirebaseConfig/FirebaseConfig';
+import {initializeApp} from 'firebase/app'
 
 const Stack = createNativeStackNavigator();
 
@@ -14,6 +19,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name = "SignUp" component={SignUpScreen} />
+        <Stack.Screen name = "SignIn" component={SignInScreen} />
         <Stack.Screen name = "Home" component={HomeScreen} />
       </Stack.Navigator>
     </NavigationContainer>

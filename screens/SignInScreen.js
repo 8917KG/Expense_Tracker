@@ -2,7 +2,7 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-nativ
 import { useEffect, useState } from 'react'
 import { useNavigation } from "@react-navigation/native";
 
-export function SignUpScreen(props) {
+export function SignInScreen(props) {
   const [email, setEmail] = useState("")
   const [validEmail, setValidEmail] = useState(false)
   const [password, setPassword] = useState("")
@@ -43,17 +43,17 @@ export function SignUpScreen(props) {
       // navigate adds a back arrow to the header
       // navigation.navigate("Home")
       // reset will make "Home" the root page of the navigation
-      navigation.reset({ index: 0, routes: [{ name: "Home" }] })
+      navigation.reset( { index: 0, routes: [ {name: "Home"} ] } )
     }
   }, [props.authStatus])
 
   return (
     <View style={styles.page}>
-      <Text style={styles.title}>Sign up for an account</Text>
+      <Text style={styles.title}>Sign in to your account</Text>
       <View style={styles.inputGroup}>
         <Text>Email address</Text>
         <TextInput
-          style={(validEmail) ? styles.validInput : styles.input}
+          style={styles.input}
           placeholder="you@domain.com"
           value={email}
           onChangeText={(emailText) => setEmail(emailText)}
@@ -62,7 +62,7 @@ export function SignUpScreen(props) {
       <View style={styles.inputGroup}>
         <Text>Password</Text>
         <TextInput
-          style={(validPassword) ? styles.validInput : styles.input}
+          style={styles.input}
           placeholder="minimum 8 characters"
           value={password}
           onChangeText={(pwText) => setPassword(pwText)}
@@ -74,13 +74,13 @@ export function SignUpScreen(props) {
         disabled={(validForm) ? false : true}
         onPress={() => props.handler(email, password)}
       >
-        <Text style={styles.buttonText}>Sign up</Text>
+        <Text style={styles.buttonText}>Sign in</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.signInLink}
-        onPress={() => navigation.navigate("SignIn")}
+        onPress={() => navigation.navigate("SignUp")}
       >
-        <Text style={styles.signInLinkText}>Already have an account? Sign in</Text>
+        <Text style={styles.signInLinkText}>Don't have an account? Sign up</Text>
       </TouchableOpacity>
     </View>
   )
@@ -130,5 +130,4 @@ const styles = StyleSheet.create({
   signInLinkText: {
     textAlign: "center",
   }
-
 })
